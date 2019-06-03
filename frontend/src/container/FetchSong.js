@@ -12,7 +12,9 @@ class FetchSong extends Component {
 			loading: true
 		};
 		this.onChangeHandler = this.onChangeHandler.bind(this);
+		this.onKeyUpHandler = this.onKeyUpHandler.bind(this);
 	}
+
 	componentDidMount() {
 		this.setState({ loading: true });
 		axios
@@ -30,6 +32,7 @@ class FetchSong extends Component {
 				});
 			});
 	}
+
 	onChangeHandler(e) {
 		axios
 			.get('/songs/search', { params: { query: e.target.value } })
@@ -41,6 +44,17 @@ class FetchSong extends Component {
 			});
 		this.setState({ searchInput: e.target.value });
 	}
+
+	onKeyUpHandler(e) {
+		const songs = this.state.songs;
+		if (e.keyCode === 13 && songs.length === 1) {
+			this.props.history.push({
+				pathname: `/detail/${songs[0].rank}`,
+				state: { song: songs[0] }
+			});
+		}
+	}
+
 	render() {
 		return (
 			<SearchableSongTable
@@ -49,6 +63,7 @@ class FetchSong extends Component {
 				loading={this.state.loading}
 				searchInput={this.state.searchInput}
 				onChangeHandler={this.onChangeHandler}
+				onKeyUpHandler={this.onKeyUpHandler}
 			/>
 		);
 	}

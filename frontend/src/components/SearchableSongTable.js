@@ -10,7 +10,8 @@ function SearchableSongTable({
 	songs,
 	loading,
 	searchInput,
-	onChangeHandler
+	onChangeHandler,
+	onKeyUpHandler
 }) {
 	const songsFound = songs.length;
 	let componentToRender;
@@ -22,14 +23,22 @@ function SearchableSongTable({
 	} else if (songsFound === 0) {
 		componentToRender = (
 			<>
-				<SearchBar value={searchInput} onChangeHandler={onChangeHandler} />
+				<SearchBar
+					value={searchInput}
+					onChangeHandler={onChangeHandler}
+					onKeyUpHandler={onKeyUpHandler}
+				/>
 				<Indicator text="Oops, song not found" />
 			</>
 		);
 	} else {
 		componentToRender = (
 			<>
-				<SearchBar value={searchInput} onChangeHandler={onChangeHandler} />
+				<SearchBar
+					value={searchInput}
+					onChangeHandler={onChangeHandler}
+					onKeyUpHandler={onKeyUpHandler}
+				/>
 				<SongTable songs={songs} />
 			</>
 		);

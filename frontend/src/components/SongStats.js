@@ -13,7 +13,7 @@ function SongStats({ song }) {
 				i++;
 				if (maxValue[i] !== 0) {
 					return (
-						<div className="songStats__item">
+						<div key={songAttr} className="songStats__item">
 							<div className="songStats__itemHeader">
 								<div className="songStats__title">{textFormat(songAttr)}</div>
 								<div className="songStats__value">{song[songAttr]}</div>
