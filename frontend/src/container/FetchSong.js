@@ -14,10 +14,13 @@ class FetchSong extends Component {
     loading: true
   };
 
+  /*
+  	This is an example of async/await syntax
+   */
   fetchSongsList = async () => {
     try {
       this.setState({ loading: true });
-      const { data } = axios.get("/songs/list");
+      const { data } = await axios.get("/songs/list");
       this.setState({
         songs: data.songs,
         loading: false
@@ -30,9 +33,12 @@ class FetchSong extends Component {
     }
   };
 
-  searchSongs = query => {
+  /*
+  	This is an example of async/await syntax
+   */
+  searchSongs = async query => {
     try {
-      const { data } = axios.get("/songs/search", { params: { query } });
+      const { data } = await axios.get("/songs/search", { params: { query } });
       this.setState({
         songs: data.songs,
         loading: false
@@ -47,11 +53,11 @@ class FetchSong extends Component {
 		Instead of using `bind` in the constructor you can use arrow functions
 		which do not have their own `this` scope.
 	 */
-  onChangeHandler = e => {
+  onChangeHandler = async e => {
     try {
       const searchInput = e.target.value;
       if (searchInput) {
-        const { data } = this.searchSongs(searchInput);
+        const { data } = await this.searchSongs(searchInput);
         this.setState({
           songs: data.songs,
           searchInput
