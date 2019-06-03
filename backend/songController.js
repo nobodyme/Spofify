@@ -1,53 +1,52 @@
-var express = require('express');
-var router = express.Router();
-var songModel = require('./songSchema');
+const songModel = require('./songSchema');
 
-router.get('/list', (req, res) => {
-	songModel
-		.find({ rank: { $lte: 50 } })
-		.then(songs => {
-			res.json({ songs: songs });
-		})
-		.catch(err => {
-			res.json({ err: err.message });
-		});
-});
-
-router.get('/detail', (req, res) => {
-	const rank = req.query.rank;
-	if (!rank) {
-		return res.json({ error: 'Data insufficient' });
+const getSongs = async (req, res) => {
+	try {
+		const songs = await songModel.find({ rank: { $lte: 50 } });
+		return res.json({ songs: songs });
+	} catch (err) {
+		return res.status(500).json({ err: err.message });
 	}
-	songModel
-		.find({ rank: rank })
-		.then(song => {
-			res.json({ song: song });
-		})
-		.catch(err => {
-			res.json({ err: err.message });
-		});
-});
+};
 
-router.get('/search', (req, res) => {
-	var query = req.query.query;
-	// if query is empty send all data
-	songModel
-		.find({
-			$or: [
-				{
-					name: { $regex: query, $options: 'i' }
-				},
-				{
-					artists: { $regex: query, $options: 'i' }
-				}
-			]
-		})
-		.then(songs => {
+const getSongDetail = async (req, res) => {
+	try {
+		const rank = req.query.rank;
+		if (!rank) {
+			return res.json({ error: 'Data insufficient' });
+		}
+		const song = await songModel.find({ rank: rank });
+		return res.json({ song: song });
+	} catch (err) {
+		return res.json({ err: err.message });
+	}
+};
+
+const searchQuery = query => {
+	return {
+		$or: [
+			{
+				name: { $regex: query, $options: 'i' }
+			},
+			{
+				artists: { $regex: query, $options: 'i' }
+			}
+		]
+	};
+};
+
+const searchSong = async (req, res) => {
+	try {
+		const query = req.query.query;
+		if (!query) {
+			return getSongs(req, res);
+		} else {
+			const songs = await songModel.find(searchQuery(query));
 			return res.json({ songs: songs });
-		})
-		.catch(err => {
-			return res.json({ message: 'Cannot query db' });
-		});
-});
+		}
+	} catch (err) {
+		return res.json({ err: err.message });
+	}
+};
 
-module.exports = router;
+module.exports = { searchSong, getSongDetail, getSongs };

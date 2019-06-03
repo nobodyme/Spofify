@@ -8,7 +8,7 @@ app.use(cors());
 
 const port = process.env.PORT || 3001;
 
-var SongController = require(__root + 'songController');
-app.use('/api/songs', SongController);
+const routerIndex = require('./routerIndex');
+app.use('/api/songs', routerIndex);
 
 app.listen(port, () => console.log('starting app'));
