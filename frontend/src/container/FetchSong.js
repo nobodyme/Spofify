@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from '../config';
-import SearchableSongTable from '../components/searchableSongTable';
+import SearchableSongTable from '../components/SearchableSongTable';
 
 class FetchSong extends Component {
 	constructor(props) {

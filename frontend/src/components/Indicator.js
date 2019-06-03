@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/components/indicator.css';
+import '../styles/components/Indicator.css';
 
 function Indicator({ text }) {
 	return (

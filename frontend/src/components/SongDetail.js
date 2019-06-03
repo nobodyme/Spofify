@@ -1,9 +1,9 @@
 import React from 'react';
-import '../styles/components/songDetail.css';
-import Indicator from './indicator';
-import Loading from './loading';
+import '../styles/components/SongDetail.css';
+import Indicator from './Indicator';
+import Loading from './Loading';
 import { millisToMinutesAndSeconds, strLengthFormat } from '../utils';
-import SongStats from './songStats';
+import SongStats from './SongStats';
 import trophy from '../assets/trophy.png';
 import stopwatch from '../assets/stopwatch.png';
 

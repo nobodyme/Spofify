@@ -1,9 +1,9 @@
 import React from 'react';
-import Indicator from './indicator';
-import SongTable from './songTable';
-import Loading from './loading';
-import SearchBar from './searchBar';
-import '../styles/components/searchableSongTable.css';
+import Indicator from './Indicator';
+import SongTable from './SongTable';
+import Loading from './Loading';
+import SearchBar from './SearchBar';
+import '../styles/components/SearchableSongTable.css';
 
 function SearchableSongTable({
 	error,

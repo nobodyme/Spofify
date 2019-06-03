@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/components/songTable.css';
-import SongTableItem from './songTableItem';
+import '../styles/components/SongTable.css';
+import SongTableItem from './SongTableItem';
 
 function SongTable({ songs }) {
 	return (

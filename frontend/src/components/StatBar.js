@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/components/statBar.css';
+import '../styles/components/StatBar.css';
 
 function StatBar({ song, songAttr, maxValue }) {
 	let valueStatBarRef = React.createRef();

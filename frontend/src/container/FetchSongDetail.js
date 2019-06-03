@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from '../config';
-import SongDetail from '../components/songDetail';
+import SongDetail from '../components/SongDetail';
 
 class FetchSongDetail extends Component {
 	constructor(props) {

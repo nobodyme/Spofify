@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import FetchSong from './fetchSong';
-import FetchSongDetail from './fetchSongDetail';
+import FetchSong from './FetchSong';
+import FetchSongDetail from './FetchSongDetail';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 class RouterContainer extends Component {

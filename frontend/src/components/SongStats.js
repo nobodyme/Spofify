@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/components/songStats.css';
-import StatBar from './statBar';
+import '../styles/components/SongStats.css';
+import StatBar from './StatBar';
 import { textFormat } from '../utils';
 
 function SongStats({ song }) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import searchIcon from '../assets/search.png';
-import '../styles/components/searchBar.css';
+import '../styles/components/SearchBar.css';
 
 function searchBar({ searchInput, onChangeHandler }) {
 	return (

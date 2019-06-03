@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { millisToMinutesAndSeconds } from '../utils';
 import { withRouter } from 'react-router-dom';
-import '../styles/components/songTableItem.css';
+import '../styles/components/SongTableItem.css';
 
 class SongListItem extends Component {
 	constructor(props) {
