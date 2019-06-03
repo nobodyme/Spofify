@@ -11,8 +11,8 @@ function StatBar({ song, songAttr, maxValue }) {
 
 	return (
 		<div className="statBar">
-			<div className="defaultStatBar" />
-			<div className="valueStatBar" ref={valueStatBarRef} />
+			<div className="statBar__default" />
+			<div className="statBar__value" ref={valueStatBarRef} />
 		</div>
 	);
 }

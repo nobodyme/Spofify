@@ -13,10 +13,10 @@ function SongStats({ song }) {
 				i++;
 				if (maxValue[i] !== 0) {
 					return (
-						<div className="statItem">
-							<div className="statItemHeader">
-								<div className="statTitle">{textFormat(songAttr)}</div>
-								<div className="statValue">{song[songAttr]}</div>
+						<div className="songStats__item">
+							<div className="songStats__itemHeader">
+								<div className="songStats__title">{textFormat(songAttr)}</div>
+								<div className="songStats__value">{song[songAttr]}</div>
 							</div>
 							<StatBar song={song} songAttr={songAttr} maxValue={maxValue[i]} />
 						</div>

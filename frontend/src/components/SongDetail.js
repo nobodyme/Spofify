@@ -15,29 +15,29 @@ function SongDetail({ error, loading, song }) {
 	} else {
 		return (
 			<div className="songDetail">
-				<div className="songHeader">
-					<div className="basicInfoHeader">
-						<div className="basicInfoHeader__title">
+				<div className="songDetail__header">
+					<div className="songDetail__basicHeader">
+						<div className="songDetail__title">
 							{strLengthFormat(song.name)}
 						</div>
-						<div className="basicInfoHeader__artist">{song.artists}</div>
+						<div className="songDetail__artist">{song.artists}</div>
 					</div>
-					<div className="otherInfoHeader">
-						<img className="rank__image" alt="trophy indicator" src={trophy} />
-						<div className="rank__number">{song.rank}</div>
-
+					<div className="songDetail__otherHeader">
 						<img
-							className="durationDetail__img"
-							alt="timer icon"
-							src={stopwatch}
+							className="songDetail__image"
+							alt="trophy indicator"
+							src={trophy}
 						/>
-						<div className="durationDetail__number">
+						<div className="songDetail__rank">{song.rank}</div>
+
+						<img className="songDetail__img" alt="timer icon" src={stopwatch} />
+						<div className="songDetail__duration">
 							{millisToMinutesAndSeconds(song.duration_ms)}
 						</div>
 					</div>
 				</div>
-				<div className="line" />
-				<SongStats className="songStats" song={song} />
+				<div className="songDetail__line" />
+				<SongStats className="songDetail__stats" song={song} />
 			</div>
 		);
 	}

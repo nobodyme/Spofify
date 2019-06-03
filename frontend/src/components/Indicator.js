@@ -3,9 +3,9 @@ import '../styles/components/Indicator.css';
 
 function Indicator({ text }) {
 	return (
-		<div className="Indicator">
-			<div className="indicator-img" />
-			<div className="indicator-text">{text}</div>
+		<div className="indicator">
+			<div className="indicator__img" />
+			<div className="indicator__text">{text}</div>
 		</div>
 	);
 }

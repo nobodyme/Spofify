@@ -1,21 +1,27 @@
-.statItem{
+.songStats{
+	width: 50%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.songStats__item{
 	margin: 16px 16px;
 }
 
-.statItemHeader{
+.songStats__itemHeader{
 	padding: 14px 0px;
 	display: flex;
 	justify-content: space-between;
 }
 
-.statTitle{
+.songStats__title{
 	color: #9aabb3d9;
 }
 
-.statValue{
-	color: #e5f9f9d9;
+.songStats__title::first-letter{
+	text-transform: capitalize;
 }
 
-.statTitle::first-letter{
-	text-transform: capitalize;
+.songStats__value{
+	color: #e5f9f9d9;
 }

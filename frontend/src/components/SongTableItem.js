@@ -23,12 +23,12 @@ class SongListItem extends Component {
 	render() {
 		return (
 			<tr
-				className="tableRow"
+				className="songTableItem"
 				onClick={() => this.onClickHandler(this.props.song)}
 			>
 				<td>{this.props.song.name}</td>
 				<td>{this.props.song.artists}</td>
-				<td className="duration">
+				<td className="songTableItem__duration">
 					{millisToMinutesAndSeconds(this.props.song.duration_ms)}
 				</td>
 			</tr>

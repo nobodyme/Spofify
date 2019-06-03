@@ -4,10 +4,10 @@ import SongTableItem from './SongTableItem';
 
 function SongTable({ songs }) {
 	return (
-		<div className="songTableWrapper">
-			<div className="title">Top 50 Songs</div>
-			<div className="table-wrapper">
-				<table className="songTable">
+		<div className="songTable">
+			<div className="songTable__title">Top 50 Songs</div>
+			<div className="songTable__wrapper">
+				<table className="songTable__table">
 					<thead>
 						<tr>
 							<th scope="col">TITLE</th>

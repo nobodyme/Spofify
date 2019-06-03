@@ -1,11 +1,11 @@
-.searchIcon{
+.searchBox__icon{
 	width: 14px;
 	position: relative;
 	top: 2px;
 	left: 20px;
 }
 
-.searchInput{
+.searchBox__input{
 	padding-top: 0px;
 	padding-left: 25px;
 	border-radius: 20px;
@@ -15,12 +15,12 @@
 	font-size: 0.8rem;
 }
 
-.searchInput::placeholder{
+.searchBox__input::placeholder{
 	color:black;
 	font-weight: 400;
 	font-size: 0.8rem;
 }
 
-.searchInput:focus{
+.searchBox__input:focus{
  outline: none;
 }
