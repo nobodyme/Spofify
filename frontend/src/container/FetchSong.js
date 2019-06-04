@@ -74,10 +74,7 @@ class FetchSong extends Component {
 	render() {
 		return (
 			<SearchableSongTable
-				error={this.state.error}
-				songs={this.state.songs}
-				loading={this.state.loading}
-				searchInput={this.state.searchInput}
+				{...this.state}
 				onChangeHandler={this.onChangeHandler}
 				onKeyUpHandler={this.onKeyUpHandler}
 			/>

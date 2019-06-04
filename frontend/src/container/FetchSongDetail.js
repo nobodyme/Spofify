@@ -45,13 +45,7 @@ class FetchSongDetail extends Component {
 	}
 
 	render() {
-		return (
-			<SongDetail
-				error={this.state.error}
-				loading={this.state.loading}
-				song={this.state.song}
-			/>
-		);
+		return <SongDetail {...this.state} />;
 	}
 }
 
