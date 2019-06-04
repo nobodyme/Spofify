@@ -1,18 +1,18 @@
 import React from 'react';
 import '../styles/components/StatBar.css';
 
-function StatBar({ song, songAttr, maxValue }) {
+function StatBar({ actualValue, maxValue }) {
 	let valueStatBarRef = React.createRef();
 
 	setTimeout(() => {
-		valueStatBarRef.current.style.width = `${(Math.abs(song[songAttr]) * 100) /
+		valueStatBarRef.current.style.width = `${(Math.abs(actualValue) * 100) /
 			maxValue}%`;
 	}, 100);
 
 	return (
 		<div className="statBar">
-			<div className="statBar__default" />
-			<div className="statBar__value" ref={valueStatBarRef} />
+			<div className="statBar__defaultBar" />
+			<div className="statBar__valueBar" ref={valueStatBarRef} />
 		</div>
 	);
 }

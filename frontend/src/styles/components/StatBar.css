@@ -2,7 +2,7 @@
 	position: relative;
 }
 
-.statBar__default{
+.statBar__defaultBar{
 	position: absolute;
 	height: 3px;
 	width: 100%;
@@ -10,7 +10,7 @@
 	border-radius: 2px;
 }
 
-.statBar__value{
+.statBar__valueBar{
 	position: absolute;
 	height: 3px;
 	background-color: #298edb;
@@ -20,7 +20,7 @@
 	transition-delay: 0.1s;
 }
 
-.statBar__value::after{
+.statBar__valueBar::after{
 	position: absolute;
     content: '';
     top: -2px;

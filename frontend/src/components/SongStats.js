@@ -17,8 +17,7 @@ function SongStats({ song }) {
 								<div className="songStats__value">{song[songAttr]}</div>
 							</div>
 							<StatBar
-								song={song}
-								songAttr={songAttr}
+								actualValue={song[songAttr]}
 								maxValue={maxValue[index]}
 							/>
 						</div>
