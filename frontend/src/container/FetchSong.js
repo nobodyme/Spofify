@@ -13,36 +13,52 @@ class FetchSong extends Component {
 		};
 		this.onChangeHandler = this.onChangeHandler.bind(this);
 		this.onKeyUpHandler = this.onKeyUpHandler.bind(this);
+		this.fetchSongList = this.fetchSongList.bind(this);
+		this.searchSongList = this.searchSongList.bind(this);
+	}
+
+	async fetchSongList() {
+		try {
+			this.setState({ loading: true });
+			const { data } = await axios.get('/songs/list');
+			this.setState({
+				songs: data.songs,
+				loading: false
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	async searchSongList(searchInput) {
+		try {
+			const { data } = await axios.get('/songs/search', {
+				params: { query: searchInput }
+			});
+			this.setState({ songs: data.songs, searchInput });
+		} catch (error) {
+			throw error;
+		}
 	}
 
 	componentDidMount() {
-		this.setState({ loading: true });
-		axios
-			.get('/songs/list')
-			.then(response => {
-				this.setState({
-					songs: response.data.songs,
-					loading: false
-				});
-			})
-			.catch(error => {
-				this.setState({
-					error: error.message,
-					loading: false
-				});
+		try {
+			this.fetchSongList();
+		} catch (error) {
+			this.setState({
+				error: error.message,
+				loading: false
 			});
+		}
 	}
 
 	onChangeHandler(e) {
-		axios
-			.get('/songs/search', { params: { query: e.target.value } })
-			.then(response => {
-				this.setState({ songs: response.data.songs });
-			})
-			.catch(error => {
-				this.setState({ error: error.message });
-			});
-		this.setState({ searchInput: e.target.value });
+		try {
+			const searchInput = e.target.value;
+			this.searchSongList(searchInput);
+		} catch (error) {
+			this.setState({ error: error.message });
+		}
 	}
 
 	onKeyUpHandler(e) {
