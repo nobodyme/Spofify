@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styles/components/SongTable.css';
 import SongTableItem from './SongTableItem';
+import PropTypes from 'prop-types';
 
 function SongTable({ songs }) {
 	return (
@@ -25,5 +26,9 @@ function SongTable({ songs }) {
 		</div>
 	);
 }
+
+SongTable.propTypes = {
+	songs: PropTypes.array.isRequired
+};
 
 export default SongTable;

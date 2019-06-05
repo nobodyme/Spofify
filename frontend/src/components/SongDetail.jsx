@@ -6,6 +6,7 @@ import { millisToMinutesAndSeconds, strLengthFormat } from '../utils';
 import SongStats from './SongStats';
 import trophy from '../assets/trophy.png';
 import stopwatch from '../assets/stopwatch.png';
+import PropTypes from 'prop-types';
 
 function SongDetail({ error, loading, song }) {
 	if (error !== '') {
@@ -42,5 +43,11 @@ function SongDetail({ error, loading, song }) {
 		);
 	}
 }
+
+SongDetail.propTypes = {
+	song: PropTypes.object.isRequired,
+	error: PropTypes.string,
+	loading: PropTypes.bool
+};
 
 export default SongDetail;

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/components/StatBar.css';
+import PropTypes from 'prop-types';
 
 function StatBar({ actualValue, maxValue }) {
 	let valueStatBarRef = React.createRef();
@@ -16,5 +17,10 @@ function StatBar({ actualValue, maxValue }) {
 		</div>
 	);
 }
+
+StatBar.propTypes = {
+	actualValue: PropTypes.number.isRequired,
+	maxValue: PropTypes.number.isRequired
+};
 
 export default StatBar;

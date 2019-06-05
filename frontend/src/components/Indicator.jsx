@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/components/Indicator.css';
+import PropTypes from 'prop-types';
 
 function Indicator({ text }) {
 	return (
@@ -9,5 +10,9 @@ function Indicator({ text }) {
 		</div>
 	);
 }
+
+Indicator.propTypes = {
+	text: PropTypes.string.isRequired
+};
 
 export default Indicator;

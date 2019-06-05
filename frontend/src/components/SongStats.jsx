@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/components/SongStats.css';
 import StatBar from './StatBar';
 import { textFormat } from '../utils';
+import PropTypes from 'prop-types';
 
 function SongStats({ song }) {
 	const maxValue = [0, 0, 0, 1, 1, 11, 20, 10, 1, 1, 1, 1, 1, 200, 0, 10, 0];
@@ -29,5 +30,9 @@ function SongStats({ song }) {
 		</div>
 	);
 }
+
+SongStats.propTypes = {
+	song: PropTypes.object.isRequired
+};
 
 export default SongStats;

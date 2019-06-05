@@ -1,8 +1,9 @@
 import React from 'react';
 import searchIcon from '../assets/search.png';
 import '../styles/components/SearchBar.css';
+import PropTypes from 'prop-types';
 
-function searchBar({ searchInput, onChangeHandler, onKeyUpHandler }) {
+function SearchBar({ searchInput, onChangeHandler, onKeyUpHandler }) {
 	return (
 		<div className="searchBox">
 			<img className="searchBox__icon" alt="search icon" src={searchIcon} />
@@ -19,4 +20,10 @@ function searchBar({ searchInput, onChangeHandler, onKeyUpHandler }) {
 	);
 }
 
-export default searchBar;
+SearchBar.propTypes = {
+	searchInput: PropTypes.string,
+	onChangeHandler: PropTypes.func,
+	onKeyUpHandler: PropTypes.func
+};
+
+export default SearchBar;

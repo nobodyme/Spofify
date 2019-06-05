@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { millisToMinutesAndSeconds } from '../utils';
 import { withRouter } from 'react-router-dom';
 import '../styles/components/SongTableItem.css';
+import PropTypes from 'prop-types';
 
 class SongListItem extends Component {
 	constructor(props) {
@@ -21,19 +22,21 @@ class SongListItem extends Component {
 	}
 
 	render() {
+		const song = this.props.song;
 		return (
-			<tr
-				className="songTableItem"
-				onClick={() => this.onClickHandler(this.props.song)}
-			>
-				<td>{this.props.song.name}</td>
-				<td>{this.props.song.artists}</td>
+			<tr className="songTableItem" onClick={() => this.onClickHandler(song)}>
+				<td>{song.name}</td>
+				<td>{song.artists}</td>
 				<td className="songTableItem__duration">
-					{millisToMinutesAndSeconds(this.props.song.duration_ms)}
+					{millisToMinutesAndSeconds(song.duration_ms)}
 				</td>
 			</tr>
 		);
 	}
 }
+
+SongListItem.propTypes = {
+	song: PropTypes.object.isRequired
+};
 
 export default withRouter(SongListItem);

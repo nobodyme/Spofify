@@ -6,7 +6,7 @@ class FetchSongDetail extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			song: [],
+			song: {},
 			error: '',
 			loading: true
 		};

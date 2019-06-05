@@ -4,6 +4,7 @@ import SongTable from './SongTable';
 import Loading from './Loading';
 import SearchBar from './SearchBar';
 import '../styles/components/SearchableSongTable.css';
+import PropTypes from 'prop-types';
 
 function SearchableSongTable({
 	error,
@@ -46,5 +47,14 @@ function SearchableSongTable({
 
 	return <div className="searchableSongTable">{componentToRender}</div>;
 }
+
+SearchableSongTable.propType = {
+	loading: PropTypes.bool,
+	error: PropTypes.string,
+	songs: PropTypes.object.isRequired,
+	searchInput: PropTypes.string.isRequired,
+	onChangeHandler: PropTypes.func,
+	onKeyUpHandler: PropTypes.func
+};
 
 export default SearchableSongTable;
