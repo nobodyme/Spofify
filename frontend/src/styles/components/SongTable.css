@@ -1,7 +1,11 @@
+.songTable{
+	margin-top: 60px;
+}
+
 .songTable__title{
 	font-weight: bold;
 	font-size: 2.5rem;
-	margin: 60px 0px;
+	margin-bottom: 60px;
 }
 
 .songTable__table{
