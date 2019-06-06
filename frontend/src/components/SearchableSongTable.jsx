@@ -9,10 +9,12 @@ import PropTypes from 'prop-types';
 function SearchableSongTable({
 	error,
 	songs,
+	cursor,
 	loading,
 	searchInput,
 	onChangeHandler,
-	onKeyUpHandler
+	onKeyUpHandler,
+	onMouseOverHandler
 }) {
 	const songsFound = songs.length;
 	let componentToRender;
@@ -40,7 +42,11 @@ function SearchableSongTable({
 					onChangeHandler={onChangeHandler}
 					onKeyUpHandler={onKeyUpHandler}
 				/>
-				<SongTable songs={songs} />
+				<SongTable
+					songs={songs}
+					cursor={cursor}
+					onMouseOverHandler={onMouseOverHandler}
+				/>
 			</>
 		);
 	}
@@ -53,8 +59,10 @@ SearchableSongTable.propType = {
 	error: PropTypes.string,
 	songs: PropTypes.object.isRequired,
 	searchInput: PropTypes.string.isRequired,
+	cursor: PropTypes.number,
 	onChangeHandler: PropTypes.func,
-	onKeyUpHandler: PropTypes.func
+	onKeyUpHandler: PropTypes.func,
+	onMouseOverHandler: PropTypes.func
 };
 
 export default SearchableSongTable;

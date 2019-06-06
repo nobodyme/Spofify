@@ -3,10 +3,10 @@
 	border-bottom: 0.4px solid #2c2e2fd9;
 }
 
-.songTableItem:hover{
-	background: #2c2e2fd9;
-}
-
 .songTableItem__duration{
 	color: #a9abadd9;
+}
+
+.active {
+	background: #2c2e2fd9;
 }

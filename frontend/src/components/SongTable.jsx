@@ -3,7 +3,7 @@ import '../styles/components/SongTable.css';
 import SongTableItem from './SongTableItem';
 import PropTypes from 'prop-types';
 
-function SongTable({ songs }) {
+function SongTable({ songs, cursor, onMouseOverHandler }) {
 	return (
 		<div className="songTable">
 			<div className="songTable__title">Top 50 Songs</div>
@@ -17,8 +17,14 @@ function SongTable({ songs }) {
 						</tr>
 					</thead>
 					<tbody>
-						{songs.map(song => (
-							<SongTableItem key={song._id} song={song} />
+						{songs.map((song, index) => (
+							<SongTableItem
+								key={song._id}
+								song={song}
+								active={cursor === index ? true : false}
+								index={index}
+								onMouseOverHandler={onMouseOverHandler}
+							/>
 						))}
 					</tbody>
 				</table>
@@ -28,7 +34,9 @@ function SongTable({ songs }) {
 }
 
 SongTable.propTypes = {
-	songs: PropTypes.array.isRequired
+	songs: PropTypes.array.isRequired,
+	cursor: PropTypes.number,
+	onMouseOverHandler: PropTypes.func
 };
 
 export default SongTable;

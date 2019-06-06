@@ -22,9 +22,14 @@ class SongListItem extends Component {
 	}
 
 	render() {
-		const song = this.props.song;
+		const { song, onMouseOverHandler, index } = this.props;
+
 		return (
-			<tr className="songTableItem" onClick={() => this.onClickHandler(song)}>
+			<tr
+				className={this.props.active ? 'songTableItem active' : 'songTableItem'}
+				onClick={() => this.onClickHandler(song)}
+				onMouseOver={() => onMouseOverHandler(index)}
+			>
 				<td>{song.name}</td>
 				<td>{song.artists}</td>
 				<td className="songTableItem__duration">
@@ -36,7 +41,10 @@ class SongListItem extends Component {
 }
 
 SongListItem.propTypes = {
-	song: PropTypes.object.isRequired
+	song: PropTypes.object.isRequired,
+	active: PropTypes.bool,
+	onMouseOverHandler: PropTypes.func,
+	index: PropTypes.number
 };
 
 export default withRouter(SongListItem);
