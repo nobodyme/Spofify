@@ -66,10 +66,10 @@ class FetchSong extends Component {
 
 	onKeyUpHandler(e) {
 		const { cursor, songs } = this.state;
-		if (e.keyCode === 13 && songs.length === 1) {
+		if (e.keyCode === 13) {
 			this.props.history.push({
-				pathname: `/detail/${songs[0].rank}`,
-				state: { song: songs[0] }
+				pathname: `/detail/${songs[cursor].rank}`,
+				state: { song: songs[cursor] }
 			});
 		}
 		if (e.keyCode === 38 && cursor >= 0) {
