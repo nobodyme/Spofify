@@ -12,9 +12,7 @@ function SearchableSongTable({
 	cursor,
 	loading,
 	searchInput,
-	onChangeHandler,
-	onKeyUpHandler,
-	onMouseOverHandler
+	onChangeHandler
 }) {
 	const songsFound = songs.length;
 	let componentToRender;
@@ -26,27 +24,15 @@ function SearchableSongTable({
 	} else if (songsFound === 0) {
 		componentToRender = (
 			<>
-				<SearchBar
-					value={searchInput}
-					onChangeHandler={onChangeHandler}
-					onKeyUpHandler={onKeyUpHandler}
-				/>
+				<SearchBar value={searchInput} onChangeHandler={onChangeHandler} />
 				<Indicator text="Oops, song not found" />
 			</>
 		);
 	} else {
 		componentToRender = (
 			<>
-				<SearchBar
-					value={searchInput}
-					onChangeHandler={onChangeHandler}
-					onKeyUpHandler={onKeyUpHandler}
-				/>
-				<SongTable
-					songs={songs}
-					cursor={cursor}
-					onMouseOverHandler={onMouseOverHandler}
-				/>
+				<SearchBar value={searchInput} onChangeHandler={onChangeHandler} />
+				<SongTable songs={songs} cursor={cursor} />
 			</>
 		);
 	}
@@ -60,9 +46,7 @@ SearchableSongTable.propType = {
 	songs: PropTypes.object.isRequired,
 	searchInput: PropTypes.string.isRequired,
 	cursor: PropTypes.number,
-	onChangeHandler: PropTypes.func,
-	onKeyUpHandler: PropTypes.func,
-	onMouseOverHandler: PropTypes.func
+	onChangeHandler: PropTypes.func
 };
 
 export default SearchableSongTable;

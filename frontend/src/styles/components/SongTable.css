@@ -12,6 +12,7 @@
 	table-layout: fixed;
 	border-collapse: collapse;
 	width: 100%;
+	outline: none;
 }
 
 .songTable__table th{

@@ -3,7 +3,7 @@ import searchIcon from '../assets/search.png';
 import '../styles/components/SearchBar.css';
 import PropTypes from 'prop-types';
 
-function SearchBar({ searchInput, onChangeHandler, onKeyUpHandler }) {
+function SearchBar({ searchInput, onChangeHandler }) {
 	return (
 		<div className="searchBox">
 			<img className="searchBox__icon" alt="search icon" src={searchIcon} />
@@ -14,7 +14,6 @@ function SearchBar({ searchInput, onChangeHandler, onKeyUpHandler }) {
 				placeholder="Search"
 				value={searchInput}
 				onChange={onChangeHandler}
-				onKeyUp={onKeyUpHandler}
 			/>
 		</div>
 	);
@@ -22,8 +21,7 @@ function SearchBar({ searchInput, onChangeHandler, onKeyUpHandler }) {
 
 SearchBar.propTypes = {
 	searchInput: PropTypes.string,
-	onChangeHandler: PropTypes.func,
-	onKeyUpHandler: PropTypes.func
+	onChangeHandler: PropTypes.func
 };
 
 export default SearchBar;

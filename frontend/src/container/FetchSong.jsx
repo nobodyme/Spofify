@@ -9,14 +9,11 @@ class FetchSong extends Component {
 			songs: [],
 			searchInput: '',
 			error: '',
-			loading: true,
-			cursor: 0
+			loading: true
 		};
 		this.onChangeHandler = this.onChangeHandler.bind(this);
-		this.onKeyUpHandler = this.onKeyUpHandler.bind(this);
 		this.fetchSongList = this.fetchSongList.bind(this);
 		this.searchSongList = this.searchSongList.bind(this);
-		this.onMouseOverHandler = this.onMouseOverHandler.bind(this);
 	}
 
 	async fetchSongList() {
@@ -64,37 +61,11 @@ class FetchSong extends Component {
 		}
 	}
 
-	onKeyUpHandler(e) {
-		const { cursor, songs } = this.state;
-		if (e.keyCode === 13) {
-			this.props.history.push({
-				pathname: `/detail/${songs[cursor].rank}`,
-				state: { song: songs[cursor] }
-			});
-		}
-		if (e.keyCode === 38 && cursor > 0) {
-			this.setState(prevState => ({
-				cursor: prevState.cursor - 1
-			}));
-		}
-		if (e.keyCode === 40 && cursor < songs.length - 1) {
-			this.setState(prevState => ({
-				cursor: prevState.cursor + 1
-			}));
-		}
-	}
-
-	onMouseOverHandler(cursor) {
-		this.setState({ cursor: cursor });
-	}
-
 	render() {
 		return (
 			<SearchableSongTable
 				{...this.state}
 				onChangeHandler={this.onChangeHandler}
-				onKeyUpHandler={this.onKeyUpHandler}
-				onMouseOverHandler={this.onMouseOverHandler}
 			/>
 		);
 	}
