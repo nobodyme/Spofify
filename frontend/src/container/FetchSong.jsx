@@ -72,12 +72,12 @@ class FetchSong extends Component {
 				state: { song: songs[cursor] }
 			});
 		}
-		if (e.keyCode === 38 && cursor >= 0) {
+		if (e.keyCode === 38 && cursor > 0) {
 			this.setState(prevState => ({
 				cursor: prevState.cursor - 1
 			}));
 		}
-		if (e.keyCode === 40 && cursor < songs.length) {
+		if (e.keyCode === 40 && cursor < songs.length - 1) {
 			this.setState(prevState => ({
 				cursor: prevState.cursor + 1
 			}));
