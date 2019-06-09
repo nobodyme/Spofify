@@ -1,7 +1,7 @@
 .songStats{
 	width: 50%;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
 }
 
 .songStats__item{
@@ -24,4 +24,10 @@
 
 .songStats__value{
 	color: #e5f9f9d9;
+}
+
+@media (min-width: 710px)  {
+	.songStats {
+		grid-template-columns: 1fr 1fr;
+	}
 }

@@ -19,6 +19,11 @@ code {
 
 #root{
 	height: 100vh;
-	padding: 20px 60px;
 	box-sizing: border-box;
+}
+
+@media (min-width: 770px) {
+	#root{
+		padding: 20px 60px;
+	}
 }
