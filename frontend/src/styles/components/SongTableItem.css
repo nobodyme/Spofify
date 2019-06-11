@@ -1,9 +1,24 @@
-.songTableItem td {
-	padding: 10px 100px;
+.songTableItem {
+	width: 100%;
+	display: flex;
+	align-content: center;
 	border-bottom: 0.4px solid #2c2e2fd9;
+	padding: 10px 0px;
+}
+
+.songTableItem__name{
+	width: 33.33%;
+	padding-left: 5%;
+}
+
+.songTableItem__artists{
+	width: 33.33%;
+	padding-left: 5%;
 }
 
 .songTableItem__duration{
+	width: 33.33%;
+	padding-left: 5%;
 	color: #a9abadd9;
 }
 

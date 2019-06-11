@@ -7,27 +7,21 @@ function SongTable({ songs, cursor, onMouseOverHandler }) {
 	return (
 		<div className="songTable">
 			<div className="songTable__title">Top 50 Songs</div>
-			<div className="songTable__wrapper">
-				<table className="songTable__table">
-					<thead>
-						<tr>
-							<th scope="col">TITLE</th>
-							<th scope="col">ARTIST</th>
-							<th scope="col">DURATION</th>
-						</tr>
-					</thead>
-					<tbody>
-						{songs.map((song, index) => (
-							<SongTableItem
-								key={song._id}
-								song={song}
-								active={cursor === index ? true : false}
-								index={index}
-								onMouseOverHandler={onMouseOverHandler}
-							/>
-						))}
-					</tbody>
-				</table>
+			<div className="songTable__table">
+				<div className="songTable__header">
+					<div className="songTable__header__name">TITLE</div>
+					<div className="songTable__header__artist">ARTIST</div>
+					<div className="songTable__header__duration">DURATION</div>
+				</div>
+				{songs.map((song, index) => (
+					<SongTableItem
+						key={song._id}
+						song={song}
+						active={cursor === index ? true : false}
+						index={index}
+						onMouseOverHandler={onMouseOverHandler}
+					/>
+				))}
 			</div>
 		</div>
 	);

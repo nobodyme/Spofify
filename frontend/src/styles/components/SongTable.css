@@ -9,19 +9,35 @@
 }
 
 .songTable__table{
-	table-layout: fixed;
-	border-collapse: collapse;
 	width: 100%;
-}
-
-.songTable__table th{
-	text-align: left;
-	font-size: 0.85rem;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	font-weight: normal;
-	color: #a9abadd9;
-	padding: 10px 100px;
+	box-sizing: border-box;
 }
 
-.songTable__table tr th {
+.songTable__header{
+	width: 100%;
+	display: flex;
+	font-size: 0.85rem;
+	color: #a9abadd9;
 	border-bottom: 0.4px solid #2c2e2fd9;
+	padding: 10px 0;
+}
+
+.songTable__header__name {
+	width: 33.33%;
+	padding-left: 5%;
+}
+
+.songTable__header__artist {
+	padding-left: 5%;
+	width: 33.33%;
+}
+
+.songTable__header__duration {
+	width: 33.33%;
+	padding-left: 5%;
 }

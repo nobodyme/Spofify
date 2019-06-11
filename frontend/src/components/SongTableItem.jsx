@@ -25,17 +25,17 @@ class SongListItem extends Component {
 		const { song, onMouseOverHandler, index } = this.props;
 
 		return (
-			<tr
+			<div
 				className={this.props.active ? 'songTableItem active' : 'songTableItem'}
 				onClick={() => this.onClickHandler(song)}
 				onMouseOver={() => onMouseOverHandler(index)}
 			>
-				<td>{song.name}</td>
-				<td>{song.artists}</td>
-				<td className="songTableItem__duration">
+				<div className="songTableItem__name">{song.name}</div>
+				<div className="songTableItem__artists">{song.artists}</div>
+				<div className="songTableItem__duration">
 					{millisToMinutesAndSeconds(song.duration_ms)}
-				</td>
-			</tr>
+				</div>
+			</div>
 		);
 	}
 }
