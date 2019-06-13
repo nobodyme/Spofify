@@ -24,23 +24,19 @@ class FetchSongDetail extends Component {
 				loading: false
 			});
 		} catch (error) {
-			throw error;
-		}
-	}
-
-	componentDidMount() {
-		try {
-			const { location, match } = this.props;
-			if (location.state) {
-				this.setState({ loading: false, song: location.state.song });
-			} else {
-				this.fetchSongByRank(match.params.rank);
-			}
-		} catch (error) {
 			this.setState({
 				error: error.message,
 				loading: false
 			});
+		}
+	}
+
+	componentDidMount() {
+		const { location, match } = this.props;
+		if (location.state) {
+			this.setState({ loading: false, song: location.state.song });
+		} else {
+			this.fetchSongByRank(match.params.rank);
 		}
 	}
 

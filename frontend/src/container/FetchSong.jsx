@@ -29,7 +29,10 @@ class FetchSong extends Component {
 				cursor: 0
 			});
 		} catch (error) {
-			throw error;
+			this.setState({
+				error: error.message,
+				loading: false
+			});
 		}
 	}
 
@@ -40,28 +43,17 @@ class FetchSong extends Component {
 			});
 			this.setState({ songs: data.songs, searchInput, cursor: 0 });
 		} catch (error) {
-			throw error;
+			this.setState({ error: error.message });
 		}
 	}
 
 	componentDidMount() {
-		try {
-			this.fetchSongList();
-		} catch (error) {
-			this.setState({
-				error: error.message,
-				loading: false
-			});
-		}
+		this.fetchSongList();
 	}
 
 	onChangeHandler(e) {
-		try {
-			const searchInput = e.target.value;
-			this.searchSongList(searchInput);
-		} catch (error) {
-			this.setState({ error: error.message });
-		}
+		const searchInput = e.target.value;
+		this.searchSongList(searchInput);
 	}
 
 	onKeyUpHandler(e) {
