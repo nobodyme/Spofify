@@ -3,7 +3,7 @@ const songModel = require('./songSchema');
 const getSongs = async (req, res) => {
 	try {
 		const songs = await songModel.find({ rank: { $lte: 50 } });
-		return res.json({ songs: songs });
+		return res.status(200).json({ songs: songs });
 	} catch (err) {
 		return res.status(500).json({ err: err.message });
 	}
@@ -13,12 +13,12 @@ const getSongDetail = async (req, res) => {
 	try {
 		const rank = req.query.rank;
 		if (!rank) {
-			return res.json({ error: 'Data insufficient' });
+			return res.status(400).json({ error: 'Data insufficient' });
 		}
 		const song = await songModel.find({ rank: rank });
-		return res.json({ song: song });
+		return res.status(200).json({ song: song });
 	} catch (err) {
-		return res.json({ err: err.message });
+		return res.status(500).json({ err: err.message });
 	}
 };
 
@@ -42,10 +42,10 @@ const searchSong = async (req, res) => {
 			return getSongs(req, res);
 		} else {
 			const songs = await songModel.find(searchQuery(query));
-			return res.json({ songs: songs });
+			return res.status(200).json({ songs: songs });
 		}
 	} catch (err) {
-		return res.json({ err: err.message });
+		return res.status(500).json({ err: err.message });
 	}
 };
 
