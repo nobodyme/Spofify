@@ -30,7 +30,7 @@ class FetchSong extends Component {
 			});
 		} catch (error) {
 			this.setState({
-				error: error.message,
+				error: error.response ? error.response.data.err : error.message,
 				loading: false
 			});
 		}
@@ -43,7 +43,9 @@ class FetchSong extends Component {
 			});
 			this.setState({ songs: data.songs, searchInput, cursor: 0 });
 		} catch (error) {
-			this.setState({ error: error.message });
+			this.setState({
+				error: error.response ? error.response.data.err : error.message
+			});
 		}
 	}
 

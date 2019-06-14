@@ -25,7 +25,7 @@ class FetchSongDetail extends Component {
 			});
 		} catch (error) {
 			this.setState({
-				error: error.message,
+				error: error.response ? error.response.data.err : error.message,
 				loading: false
 			});
 		}
