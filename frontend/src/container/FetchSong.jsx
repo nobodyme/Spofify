@@ -9,7 +9,7 @@ class FetchSong extends Component {
 			songs: [],
 			searchInput: '',
 			error: '',
-			loading: true,
+			// loading: true,
 			cursor: 0
 		};
 		this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -21,17 +21,17 @@ class FetchSong extends Component {
 
 	async fetchSongList() {
 		try {
-			this.setState({ loading: true });
+			// this.setState({ loading: true });
 			const { data } = await axios.get('/songs/list');
 			this.setState({
 				songs: data.songs,
-				loading: false,
+				// loading: false,
 				cursor: 0
 			});
 		} catch (error) {
 			this.setState({
-				error: error.response ? error.response.data.err : error.message,
-				loading: false
+				error: error.response ? error.response.data.err : error.message
+				// loading: false
 			});
 		}
 	}

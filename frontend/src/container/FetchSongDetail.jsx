@@ -7,26 +7,26 @@ class FetchSongDetail extends Component {
 		super(props);
 		this.state = {
 			song: {},
-			error: '',
-			loading: true
+			error: ''
+			// loading: true
 		};
 		this.fetchSongByRank = this.fetchSongByRank.bind(this);
 	}
 
 	async fetchSongByRank(rank) {
 		try {
-			this.setState({ loading: true });
+			// this.setState({ loading: true });
 			const { data } = await axios.get('/songs/detail', {
 				params: { rank: rank }
 			});
 			this.setState({
-				song: data.song[0],
-				loading: false
+				song: data.song[0]
+				// loading: false
 			});
 		} catch (error) {
 			this.setState({
-				error: error.response ? error.response.data.err : error.message,
-				loading: false
+				error: error.response ? error.response.data.err : error.message
+				// loading: false
 			});
 		}
 	}
@@ -34,7 +34,10 @@ class FetchSongDetail extends Component {
 	componentDidMount() {
 		const { location, match } = this.props;
 		if (location.state) {
-			this.setState({ loading: false, song: location.state.song });
+			this.setState({
+				// loading: false,
+				song: location.state.song
+			});
 		} else {
 			this.fetchSongByRank(match.params.rank);
 		}

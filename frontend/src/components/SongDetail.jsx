@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/components/SongDetail.css';
 import Indicator from './Indicator';
-import Loading from './Loading';
+// import Loading from './Loading';
 import { millisToMinutesAndSeconds, strLengthFormat } from '../utils';
 import SongStats from './SongStats';
 import trophy from '../assets/trophy.png';
@@ -11,8 +11,8 @@ import PropTypes from 'prop-types';
 function SongDetail({ error, loading, song }) {
 	if (error !== '') {
 		return <Indicator text="Oops, something went wrong" />;
-	} else if (loading === true) {
-		return <Loading />;
+		// } else if (loading === true) {
+		// 	return <Loading />;
 	} else {
 		return (
 			<div className="songDetail">
