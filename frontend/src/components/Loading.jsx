@@ -5,7 +5,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles(theme => ({
 	progress: {
-		margin: theme.spacing(2)
+		margin: theme.spacing(2),
+		color: 'white'
 	}
 }));
 
@@ -14,7 +15,7 @@ function Loading() {
 
 	return (
 		<div className="spinner">
-			<CircularProgress className={classes.progress} color="white" />
+			<CircularProgress className={classes.progress} color="primary" />
 		</div>
 	);
 }

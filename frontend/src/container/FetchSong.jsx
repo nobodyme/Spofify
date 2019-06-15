@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from '../config';
 import SearchableSongTable from '../components/SearchableSongTable';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 class FetchSong extends Component {
 	constructor(props) {
@@ -84,12 +85,14 @@ class FetchSong extends Component {
 
 	render() {
 		return (
-			<SearchableSongTable
-				{...this.state}
-				onChangeHandler={this.onChangeHandler}
-				onKeyUpHandler={this.onKeyUpHandler}
-				onMouseOverHandler={this.onMouseOverHandler}
-			/>
+			<ErrorBoundary>
+				<SearchableSongTable
+					{...this.state}
+					onChangeHandler={this.onChangeHandler}
+					onKeyUpHandler={this.onKeyUpHandler}
+					onMouseOverHandler={this.onMouseOverHandler}
+				/>
+			</ErrorBoundary>
 		);
 	}
 }

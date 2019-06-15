@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from '../config';
 import SongDetail from '../components/SongDetail';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 class FetchSongDetail extends Component {
 	constructor(props) {
@@ -41,7 +42,11 @@ class FetchSongDetail extends Component {
 	}
 
 	render() {
-		return <SongDetail {...this.state} />;
+		return (
+			<ErrorBoundary>
+				<SongDetail {...this.state} />
+			</ErrorBoundary>
+		);
 	}
 }
 
