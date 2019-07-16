@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 var songSchema = mongoose.Schema({
 	name: {
@@ -52,5 +52,5 @@ var songSchema = mongoose.Schema({
 	}
 });
 
-var songModel = mongoose.model("songlists", songSchema);
+var songModel = mongoose.model('songlists', songSchema);
 module.exports = songModel;

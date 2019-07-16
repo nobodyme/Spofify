@@ -4,7 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@material-ui/core": "^4.1.0",
-		"axios": "^0.18.0",
+		"axios": "^0.19.0",
 		"prop-types": "^15.7.2",
 		"react": "^16.8.5",
 		"react-dom": "^16.8.5",
@@ -17,6 +17,21 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
+	"husky": {
+		"hook": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js, jsx}": [
+			"eslint --fix",
+			"git add"
+		],
+		"*.{js, jsx, html, css, json}": [
+			"prettier --write",
+			"git add"
+		]
+	},
 	"eslintConfig": {
 		"extends": "react-app"
 	},
@@ -25,5 +40,13 @@
 		"not dead",
 		"not ie <= 11",
 		"not op_mini all"
-	]
+	],
+	"devDependencies": {
+		"eslint": "^5.12.0",
+		"eslint-config-prettier": "^6.0.0",
+		"eslint-plugin-prettier": "^3.1.0",
+		"husky": "^3.0.0",
+		"lint-staged": "^9.2.0",
+		"prettier": "^1.18.2"
+	}
 }
