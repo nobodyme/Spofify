@@ -4,23 +4,15 @@ import SearchableSongTable from '../components/SearchableSongTable';
 import ErrorBoundary from '../components/ErrorBoundary';
 
 class FetchSong extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			songs: [],
-			searchInput: '',
-			error: '',
-			loading: true,
-			cursor: 0
-		};
-		this.onChangeHandler = this.onChangeHandler.bind(this);
-		this.onKeyUpHandler = this.onKeyUpHandler.bind(this);
-		this.fetchSongList = this.fetchSongList.bind(this);
-		this.searchSongList = this.searchSongList.bind(this);
-		this.onMouseOverHandler = this.onMouseOverHandler.bind(this);
-	}
+	state = {
+		songs: [],
+		searchInput: '',
+		error: '',
+		loading: true,
+		cursor: 0
+	};
 
-	async fetchSongList() {
+	fetchSongList = async () => {
 		try {
 			this.setState({ loading: true });
 			const { data } = await axios.get('/songs/list');
@@ -35,9 +27,9 @@ class FetchSong extends Component {
 				loading: false
 			});
 		}
-	}
+	};
 
-	async searchSongList(searchInput) {
+	searchSongList = async searchInput => {
 		try {
 			const { data } = await axios.get('/songs/search', {
 				params: { query: searchInput }
@@ -48,18 +40,18 @@ class FetchSong extends Component {
 				error: error.response ? error.response.data.err : error.message
 			});
 		}
-	}
+	};
 
 	componentDidMount() {
 		this.fetchSongList();
 	}
 
-	onChangeHandler(e) {
+	onChangeHandler = e => {
 		const searchInput = e.target.value;
 		this.searchSongList(searchInput);
-	}
+	};
 
-	onKeyUpHandler(e) {
+	onKeyUpHandler = e => {
 		const { cursor, songs } = this.state;
 		if (e.keyCode === 13) {
 			this.props.history.push({
@@ -77,17 +69,21 @@ class FetchSong extends Component {
 				cursor: prevState.cursor + 1
 			}));
 		}
-	}
+	};
 
-	onMouseOverHandler(cursor) {
+	onMouseOverHandler = cursor => {
 		this.setState({ cursor: cursor });
-	}
+	};
 
 	render() {
 		return (
 			<ErrorBoundary>
 				<SearchableSongTable
-					{...this.state}
+					songs={this.state.songs}
+					searchInput={this.state.searchInput}
+					error={this.state.error}
+					loading={this.state.loading}
+					cursor={this.state.cursor}
 					onChangeHandler={this.onChangeHandler}
 					onKeyUpHandler={this.onKeyUpHandler}
 					onMouseOverHandler={this.onMouseOverHandler}
