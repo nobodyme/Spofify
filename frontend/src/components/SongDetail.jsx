@@ -8,10 +8,10 @@ import trophy from '../assets/trophy.png';
 import stopwatch from '../assets/stopwatch.png';
 import PropTypes from 'prop-types';
 
-function SongDetail({ error, loading, song }) {
+function SongDetail({ error, isLoading, song }) {
 	if (error !== '') {
 		return <Indicator text="Oops, something went wrong" />;
-	} else if (loading === true) {
+	} else if (isLoading === true) {
 		return <Loading />;
 	} else {
 		return (

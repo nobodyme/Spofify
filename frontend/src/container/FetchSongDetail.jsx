@@ -1,53 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from '../config';
 import SongDetail from '../components/SongDetail';
 import ErrorBoundary from '../components/ErrorBoundary';
 
-class FetchSongDetail extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			song: {},
-			error: '',
-			loading: true
-		};
-		this.fetchSongByRank = this.fetchSongByRank.bind(this);
-	}
+function FetchSongDetail({ location, match }) {
+	const [song, setSong] = useState({});
+	const [error, setError] = useState('');
+	const [isLoading, setisLoading] = useState(true);
 
-	async fetchSongByRank(rank) {
+	const fetchSongByRank = async rank => {
 		try {
-			this.setState({ loading: true });
+			setisLoading(true);
 			const { data } = await axios.get('/songs/detail', {
 				params: { rank: rank }
 			});
-			this.setState({
-				song: data.song[0],
-				loading: false
-			});
+			setSong(data.song[0]);
+			setisLoading(false);
 		} catch (error) {
-			this.setState({
-				error: error.response ? error.response.data.err : error.message,
-				loading: false
-			});
+			setError(error.response ? error.response.data.err : error.message);
+			setisLoading(false);
 		}
-	}
+	};
 
-	componentDidMount() {
-		const { location, match } = this.props;
+	useEffect(() => {
 		if (location.state) {
-			this.setState({ loading: false, song: location.state.song });
+			setisLoading(false);
+			setSong(location.state.song);
 		} else {
-			this.fetchSongByRank(match.params.rank);
+			fetchSongByRank(match.params.rank);
 		}
-	}
+	}, [location.state, match]);
 
-	render() {
-		return (
-			<ErrorBoundary>
-				<SongDetail {...this.state} />
-			</ErrorBoundary>
-		);
-	}
+	return (
+		<ErrorBoundary>
+			<SongDetail song={song} error={error} isLoading={isLoading} />
+		</ErrorBoundary>
+	);
 }
 
 export default FetchSongDetail;
