@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../styles/components/StatBar.css';
 import PropTypes from 'prop-types';
 
 function StatBar({ actualValue, maxValue }) {
 	let valueStatBarRef = React.createRef();
 
-	setTimeout(() => {
-		valueStatBarRef.current.style.width = `${(Math.abs(actualValue) * 100) /
-			maxValue}%`;
-	}, 100);
+	useEffect(() => {
+		setTimeout(() => {
+			valueStatBarRef.current.style.width = `${(Math.abs(actualValue) * 100) /
+				maxValue}%`;
+		}, 100);
+	});
 
 	return (
 		<div className="statBar">

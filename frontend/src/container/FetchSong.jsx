@@ -1,96 +1,83 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from '../config';
 import SearchableSongTable from '../components/SearchableSongTable';
 import ErrorBoundary from '../components/ErrorBoundary';
 
-class FetchSong extends Component {
-	state = {
-		songs: [],
-		searchInput: '',
-		error: '',
-		loading: true,
-		cursor: 0
-	};
+function FetchSong(props) {
+	const [songs, setSongs] = useState('');
+	const [searchInput, setSearchInput] = useState('');
+	const [error, setError] = useState('');
+	const [isLoading, setisLoading] = useState(true);
+	const [cursor, setCursor] = useState(0);
 
-	fetchSongList = async () => {
+	const fetchSongList = async () => {
 		try {
-			this.setState({ loading: true });
+			setisLoading(true);
 			const { data } = await axios.get('/songs/list');
-			this.setState({
-				songs: data.songs,
-				loading: false,
-				cursor: 0
-			});
+			setSongs(data.songs);
+			setisLoading(false);
+			setCursor(0);
 		} catch (error) {
-			this.setState({
-				error: error.response ? error.response.data.err : error.message,
-				loading: false
-			});
+			setError(error.response ? error.response.data.err : error.message);
+			setisLoading(false);
 		}
 	};
 
-	searchSongList = async searchInput => {
+	const searchSongList = async searchInput => {
 		try {
 			const { data } = await axios.get('/songs/search', {
 				params: { query: searchInput }
 			});
-			this.setState({ songs: data.songs, searchInput, cursor: 0 });
+			setSongs(data.songs);
+			setSearchInput(searchInput);
+			setCursor(0);
 		} catch (error) {
-			this.setState({
-				error: error.response ? error.response.data.err : error.message
-			});
+			setError(error.response ? error.response.data.err : error.message);
 		}
 	};
 
-	componentDidMount() {
-		this.fetchSongList();
-	}
-
-	onChangeHandler = e => {
+	const onChangeHandler = e => {
 		const searchInput = e.target.value;
-		this.searchSongList(searchInput);
+		searchSongList(searchInput);
 	};
 
-	onKeyUpHandler = e => {
-		const { cursor, songs } = this.state;
+	const onKeyUpHandler = e => {
 		if (e.keyCode === 13) {
-			this.props.history.push({
+			props.history.push({
 				pathname: `/detail/${songs[cursor].rank}`,
 				state: { song: songs[cursor] }
 			});
 		}
 		if (e.keyCode === 38 && cursor > 0) {
-			this.setState(prevState => ({
-				cursor: prevState.cursor - 1
-			}));
+			setCursor(cursor - 1);
 		}
 		if (e.keyCode === 40 && cursor < songs.length - 1) {
-			this.setState(prevState => ({
-				cursor: prevState.cursor + 1
-			}));
+			setCursor(cursor + 1);
 		}
 	};
 
-	onMouseOverHandler = cursor => {
-		this.setState({ cursor: cursor });
+	const onMouseOverHandler = cursor => {
+		setCursor(cursor);
 	};
 
-	render() {
-		return (
-			<ErrorBoundary>
-				<SearchableSongTable
-					songs={this.state.songs}
-					searchInput={this.state.searchInput}
-					error={this.state.error}
-					loading={this.state.loading}
-					cursor={this.state.cursor}
-					onChangeHandler={this.onChangeHandler}
-					onKeyUpHandler={this.onKeyUpHandler}
-					onMouseOverHandler={this.onMouseOverHandler}
-				/>
-			</ErrorBoundary>
-		);
-	}
+	useEffect(() => {
+		fetchSongList();
+	}, []);
+
+	return (
+		<ErrorBoundary>
+			<SearchableSongTable
+				songs={songs}
+				searchInput={searchInput}
+				error={error}
+				loading={isLoading}
+				cursor={cursor}
+				onChangeHandler={onChangeHandler}
+				onKeyUpHandler={onKeyUpHandler}
+				onMouseOverHandler={onMouseOverHandler}
+			/>
+		</ErrorBoundary>
+	);
 }
 
 export default FetchSong;
