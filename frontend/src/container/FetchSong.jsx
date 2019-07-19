@@ -49,10 +49,10 @@ function FetchSong(props) {
 			});
 		}
 		if (e.keyCode === 38 && cursor > 0) {
-			setCursor(cursor - 1);
+			setCursor(c => c - 1);
 		}
 		if (e.keyCode === 40 && cursor < songs.length - 1) {
-			setCursor(cursor + 1);
+			setCursor(c => c + 1);
 		}
 	};
 
